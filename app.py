@@ -7,7 +7,11 @@ def handle_input():
         return False
 
     if(choice == "1"):
+        print()
+        print("vvv---------------------------vvv")
         list_reminders()
+        print()
+        print("^^^---------------------------^^^")
 
     elif(choice == "2"):
         print()
@@ -22,13 +26,9 @@ def handle_input():
 
 def print_menu():
     print()
-    print('|--------------|')
-    print('|  Pluralsight |')
-    print('|   Reminders  |')
-    print('|     App      |')
-    print('|--------------|')
-    print('* * * * * * * * *')
-    print('Please select an option:')
+    print(' ------------------------------- ')
+    print('|   Pluralsight Reminders App   |')
+    print(' ------------------------------- ')
     print()
     print('1) List reminders')
     print('2) Add a reminder')
