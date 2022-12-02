@@ -7,6 +7,7 @@ from dateutil.parser import parse
 
 # not all methods on an Abstract Base Class need to be abstract,
 # however, if none are abstract, then the class itself is no longer abstract
+# NOTE: not used during the project, it is just a showcase
 class DeadlinedMetaReminder(Iterable, metaclass=ABCMeta):
     @abstractmethod
     def is_due(self):
@@ -28,4 +29,7 @@ class DateReminder(DeadlinedReminder):
 
     def is_due(self):
         return self.date <= datetime.now()
+
+    def __iter__(self):
+        return iter([self.text, self.date.isoformat()])
 
