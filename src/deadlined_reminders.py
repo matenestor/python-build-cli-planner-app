@@ -23,11 +23,17 @@ class DeadlinedReminder(Iterable, ABC):
 
     @classmethod
     def __subclasshook__(cls, subclass):
-        """This class method is called as part of
-        issubclass(ReminderClass, DeadlinedReminder).
-        It checks that the given subclass contains the required methods
-        __iter__() and is_due() anywhere in its hierarchy. If they are present,
-        the class is considered to be a virtual subclass of DeadlinedReminder.
+        """A class, that passes this check, is considered "a virtual subclass"
+        of this class. E.g. 'external_reminders.EveningReminder` is a
+        virtual subclass of a 'deadlined_reminders.DeadlinedReminder'.
+
+        From the project tutorial:
+          This class method is called as part of
+          issubclass(ReminderClass, DeadlinedReminder).
+          It checks that the given subclass contains the required methods
+          __iter__() and is_due() anywhere in its hierarchy. If they are
+          present, the class is considered to be a virtual subclass of the
+          DeadlinedReminder.
 
         """
         if cls is not DeadlinedReminder:

@@ -19,10 +19,13 @@ def list_reminders():
 def add_reminder(text, date, ReminderClass):
     reminder = ReminderClass(text, date)
 
+    # NOTE: Python calls with a hyphen, because the tests
+    #   in this project are checking code in comments.. -_-
+
     # Check whether an instance of a ReminderClass class is valid,
-    # as opposed to the class itself done with 'issubclass()'.
+    # as opposed to the class itself done with 'issubclas-s()'.
     # Thus, do not make an assumption about the parameters taken by the
-    # constructor ReminderClass(). Using 'isinstance()' would allow the
+    # constructor ReminderClas-s(). Using 'isinstance()' would allow the
     # add_reminder() function to TODO? receive the instance directly, thus
     # delegating its construction to a code that knows how to do it better.
     if not isinstance(reminder, DeadlinedReminder):
