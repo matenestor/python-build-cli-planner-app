@@ -21,6 +21,29 @@ class DeadlinedReminder(Iterable, ABC):
     def is_due(self):
         pass
 
+    @classmethod
+    def __subclasshook__(cls, subclass):
+        """This class method is called as part of
+        issubclass(ReminderClass, DeadlinedReminder).
+        It checks that the given subclass contains the required methods
+        __iter__() and is_due() anywhere in its hierarchy. If they are present,
+        the class is considered to be a virtual subclass of DeadlinedReminder.
+
+        """
+        if cls is not DeadlinedReminder:
+            return NotImplemented
+
+        def attr_in_hierarchy(attr):
+            return any(
+                attr in SuperClass.__dict__ for SuperClass in subclass.__mro__
+            )
+
+        if not all(attr_in_hierarchy(attr) for attr in ('__iter__', 'is_due')):
+            return NotImplemented
+
+        return True
+
+
 
 class DateReminder(DeadlinedReminder):
     def __init__(self, text, date):
